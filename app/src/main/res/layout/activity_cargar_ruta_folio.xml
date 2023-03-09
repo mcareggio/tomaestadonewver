@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.careggio.marcos.tomaestado.Cargar_ruta_folio">
+
+        <Button
+            android:id="@+id/cargar_archivo_ryf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargar Archivo Ruta y folio"
+            />
+        <Button
+            android:id="@+id/cargar_archivo_estados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargar Estados"/>
+        <Button
+            android:id="@+id/cargar_orden_agua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargar Orden Agua"/>
+        <Button
+            android:id="@+id/cargar_orden_energia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargar Orden Energia"/>
+        <Button
+            android:id="@+id/exportar_estados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exportar Estados Periodo Actual Energia"/>
+
+        <Button
+            android:id="@+id/exportar_estados_agua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exportar Estados Periodo Actual Agua"/>
+        <Button
+            android:id="@+id/import_est_propio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Importar estados Propios"/>
+
+</LinearLayout>

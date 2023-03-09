@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.careggio.marcos.tomaestado.Recorrido"
+    tools:showIn="@layout/activity_recorrido">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre y Apellido:"
+            android:layout_gravity="center_horizontal|top"/>
+        <TextView
+            android:id="@+id/nombre_apellido"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emptystr"
+            android:textColor="@android:color/background_dark"
+            android:layout_gravity="center_horizontal|top"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Direccion:"
+            android:layout_gravity="center_horizontal|top"/>
+        <TextView
+            android:id="@+id/direccion"
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emptystr"
+            android:textColor="@android:color/background_dark"
+            android:layout_gravity="center_horizontal|top"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ruta-Folio:"
+            android:layout_gravity="center_horizontal|top"/>
+        <TextView
+            android:id="@+id/ruta_folio"
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emptystr"
+            android:textColor="@android:color/background_dark"
+            android:layout_gravity="center_horizontal|top"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nro Medidor:"
+            android:layout_gravity="center_horizontal|top"/>
+        <TextView
+            android:id="@+id/nro_medidor"
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emptystr"
+            android:textColor="@android:color/background_dark"
+            android:layout_gravity="center_horizontal|top"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Periodo: "
+            android:layout_gravity="center_horizontal|top"/>
+        <TextView
+            android:id="@+id/periodo"
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emptystr"
+            android:textColor="@android:color/background_dark"
+            android:layout_gravity="center_horizontal|top"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orden:"
+            android:layout_gravity="center_horizontal|top"/>
+        <TextView
+            android:id="@+id/orden"
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+
+            android:textColor="@android:color/background_dark"
+            android:layout_gravity="center_horizontal|top"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado Anterior:"
+            android:layout_gravity="center_horizontal|top"/>
+        <TextView
+            android:id="@+id/estado_anterior"
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emptystr"
+            android:textColor="@android:color/background_dark"
+            android:layout_gravity="center_horizontal|top"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Consumo:"
+            android:layout_gravity="center_horizontal|top"/>
+        <TextView
+            android:id="@+id/consumo"
+            android:layout_marginTop="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/emptystr"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_gravity="center_horizontal|top"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+
+        android:layout_marginTop="20dp"
+        android:id="@+id/estado_nuevo"
+        android:layout_width="150dp"
+        android:text="@string/emptystr"
+        android:inputType="number"
+        android:textSize="30dp"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:id="@+id/btn_cargar_estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_cargar_estado"/>
+    </LinearLayout>
+        <Button
+            android:id="@+id/btn_pasar_s_cargar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/btn_pasar_por_alto"/>
+
+</LinearLayout>

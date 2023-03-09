@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.careggio.marcos.tomaestado">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    }
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.careggio.marcos.tomaestado.Login"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.careggio.marcos.tomaestado.Inicio"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action." />
+
+                <category android:name="android.intent.category." />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.careggio.marcos.tomaestado.Recorrido"
+            android:label="@string/title_activity_recorrido"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action." />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.careggio.marcos.tomaestado.Cargar_ruta_folio"
+            android:label="@string/title_activity_cargar_ruta_folio"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.careggio.marcos.tomaestado.Configuracion" />
+        <activity
+            android:name="com.careggio.marcos.tomaestado.Buscar"
+            android:label="@string/title_activity_buscar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.careggio.marcos.tomaestado.Serverconexion" />
+        <activity
+            android:name="com.careggio.marcos.tomaestado.Modificar_orden"
+            android:label="@string/title_activity_modificar_orden"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.careggio.marcos.tomaestado.Agregar_Usuario"
+            android:label="@string/title_activity_agregar__usuario"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.careggio.marcos.tomaestado.Agregar_usr" />
+        <activity android:name="com.careggio.marcos.tomaestado.Listado_sin_orden" />
+        <activity
+            android:name="com.careggio.marcos.tomaestado.GraficaEstado"
+            android:label="@string/title_activity_grafica_estado"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.careggio.marcos.tomaestado.Actualizar_Datos"
+            android:label="@string/title_activity_actualizar__datos"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

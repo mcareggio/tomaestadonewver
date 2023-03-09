@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.careggio.marcos.tomaestado.Agregar_usr">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <EditText
+            android:id="@+id/nombreyapellido"
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:inputType="text"
+
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="20dp"
+            android:text=""
+            android:hint="Nombre y Apellido"/>
+        <EditText
+            android:id="@+id/direccion"
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:inputType="text"
+
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="20dp"
+            android:text=""
+            android:hint="Direccion"/>
+        <EditText
+            android:id="@+id/ruta"
+            android:layout_marginTop="20dp"
+            android:layout_width="50dp"
+            android:inputType="number"
+            android:hint="Ruta"
+
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="20dp"
+            android:text=""/>
+        <EditText
+            android:id="@+id/folio"
+            android:layout_marginTop="20dp"
+            android:layout_width="80dp"
+            android:inputType="number"
+            android:hint="folio"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="20dp"
+            android:text=""/>
+        <CheckBox
+            android:id="@+id/check_nro_med_energia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Energia"/>
+        <EditText
+            android:id="@+id/nro_m_energia"
+            android:layout_marginTop="10dp"
+            android:layout_width="100dp"
+
+            android:hint="Nro Med Energia"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="20dp"
+            android:text=""
+            android:visibility="invisible"
+            android:inputType="number"
+            />
+        <CheckBox
+            android:id="@+id/check_nro_med_agua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agua"/>
+        <EditText
+            android:id="@+id/nro_m_agua"
+            android:layout_marginTop="10dp"
+            android:layout_width="100dp"
+
+            android:hint="Nro Med Agua"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textSize="20dp"
+            android:text=""
+            android:inputType="number"
+            android:visibility="invisible"/>
+        <Button
+            android:id="@+id/guardar_usr_nuevo"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Guardar"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

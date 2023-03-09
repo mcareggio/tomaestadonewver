@@ -1,0 +1,46 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.careggio.marcos.tomaestado.Inicio">
+    <item
+        android:id="@+id/action_iniciar_recorrido"
+        android:orderInCategory="100"
+        android:title="@string/menu_recorrido"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_buscar"
+        android:orderInCategory="100"
+        android:title="Buscar"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_cargar_rutas_folios"
+        android:orderInCategory="100"
+        android:title="Cargar Ruta y  Folio"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_actualizar_datos"
+        android:orderInCategory="100"
+        android:title="Actualizar Datos"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/agregar_usuario"
+        android:orderInCategory="100"
+        android:title="Agregar Usuario"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/cambiar_orden"
+        android:orderInCategory="100"
+        android:title="Modificar Orden"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_configuracion"
+        android:orderInCategory="100"
+        android:title="Configuración"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_serverconexion"
+        android:orderInCategory="100"
+        android:title="Server Conexion"
+        app:showAsAction="never" />
+
+</menu>
