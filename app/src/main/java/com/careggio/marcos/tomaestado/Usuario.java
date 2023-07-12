@@ -8,10 +8,21 @@ import android.content.Context;
  */
 
 public class Usuario {
+    private String nombreyapellido;
+    private String direccion;
+    private String ruta;
+    private String folio;
+    private String nro_medidor;
+
     public void Usuario(){}
     public String[][] cargarUsuario(Context context,String ruta, String folio){
         Bbdd bd=new Bbdd();
         String [][] array=bd.consutlar(context,"SELECT * FROM usuarios WHERE ruta="+ruta+" and folio="+folio+" LIMIT 1");
+        this.nombreyapellido=array[0][3];
+        this.direccion=array[0][4];
+        this.ruta=array[0][1];
+        this.folio=array[0][2];
+        this.nro_medidor=array[0][5];
         return array;
     }
     public String [][] proximo_usuario_vacio(Context context,String tipo_t_estado,String periodo){
@@ -170,5 +181,25 @@ public class Usuario {
         rta=false;
 
         return  rta;
+    }
+
+    public String getNombreyapellido() {
+        return nombreyapellido;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getFolio() {
+        return folio;
+    }
+
+    public String getNro_medidor() {
+        return nro_medidor;
+    }
+
+    public String getRuta() {
+        return ruta;
     }
 }

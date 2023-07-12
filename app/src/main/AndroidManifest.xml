@@ -80,6 +80,10 @@
             android:name="com.careggio.marcos.tomaestado.Actualizar_Datos"
             android:label="@string/title_activity_actualizar__datos"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-    </application>
 
+    <activity
+        android:name="com.careggio.marcos.tomaestado.ListadoEstados"
+        android:label="Listado de Estados"
+        android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
 </manifest>

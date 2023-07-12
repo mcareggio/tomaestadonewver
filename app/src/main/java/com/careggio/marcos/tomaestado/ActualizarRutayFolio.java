@@ -122,8 +122,8 @@ public class ActualizarRutayFolio {
 
                         array[0][1]=reslt[1];
                         array[1][1]=reslt[2];
-                        array[2][1]=reslt[7];
-                        array[3][1]=reslt[8];
+                        array[2][1]=reslt[7].replace("'","");
+                        array[3][1]=reslt[8].replace("'","");;
                         array[4][1]=reslt[18];
                         array[5][1]=reslt[29];
                         array[6][1]=String.valueOf(med_energia);

@@ -26,6 +26,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quitar Usuarios que no estan en el sistema" />
+
+        <Button
+            android:id="@+id/actualizar_estados_agua"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:text="Actualizar los Estados del Agua" />
+        <Button
+            android:id="@+id/actualizar_estados_energia"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:text="Actualizar los Estados del Energia" />
+        <Button
+        android:id="@+id/actualizar_orden_agua"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:text="Actualizar orden Agua"/>
+        <Button
+            android:id="@+id/actualizar_orden_energia"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:text="Actualizar orden Energia"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

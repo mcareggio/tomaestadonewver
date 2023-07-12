@@ -23,5 +23,4 @@
     <include layout="@layout/content_actualizar__datos" />
 
 
-
 </android.support.design.widget.CoordinatorLayout>

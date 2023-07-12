@@ -2,11 +2,13 @@ package com.careggio.marcos.tomaestado;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +36,12 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
             Manifest.permission.INTERNET,
 
     };
-    private Button cargar_archivo_actualizaciones,quitar_usuarios;
+    private int [] iditems;
+    private Usuario usr;
+    private  ProgressDialog progressDialog;
+    private Actualizar_Datos actualizar_datos;
+    private Button cargar_archivo_actualizaciones,quitar_usuarios,actualizar_estados_agua,actualizar_estados_energia,actualizar_orden_agua,actualizar_orden_energia;
+    private Uri uri;
     private int VALOR_RETORNO = 1;
     Actualizar_Datos act;
     @Override
@@ -49,6 +56,8 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
         cargar_archivo_actualizaciones.setOnClickListener(this);
         quitar_usuarios=(Button)findViewById(R.id.quitar_usuarios);
         quitar_usuarios.setOnClickListener(this);
+        actualizar_estados_agua=(Button)findViewById(R.id.actualizar_estados_agua);
+        actualizar_estados_agua.setOnClickListener(this);
         act=this;
 
     }
@@ -65,6 +74,9 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
             case R.id.quitar_usuarios:
                 this.mostrarDialogoConElementosAEliminar();
                 break;
+            case R.id.actualizar_estados_agua:
+                /*Terminar de hacer*/
+                break;
 
         }
 
@@ -79,14 +91,38 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
         if ((resultCode == RESULT_OK) && (requestCode == VALOR_RETORNO)) {
             //Procesar el resultado
 
-            Uri uri = data.getData(); //obtener el uri content
+            //Uri uri = data.getData(); //obtener el uri content
 
-            System.out.println("Archivo Seleccionado "+uri);
+            //System.out.println("Archivo Seleccionado "+uri);
             String[] res;
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Cargando..."); // Setting Message
+            progressDialog.setTitle("Cargando Archivo"); // Setting Title
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+            // Display Progress Dialog
+            progressDialog.setCancelable(false);
+
+            progressDialog.show();
+            actualizar_datos=this;
+            //Intent data2=data;
+            uri = data.getData();
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        Looper.prepare();
+                         //obtener el uri content
+
             ActualizarRutayFolio actryf=new ActualizarRutayFolio();
-            actryf.cargarTablaTemporal(this,Calculo.getPath(this,uri));
-            actryf.actualizarNombreDireNrommed(this);
-            actryf.cargarLosQueEstanEnFoxYnNoAca(this);
+            actryf.cargarTablaTemporal(actualizar_datos,Calculo.getPath(actualizar_datos,uri));
+            actryf.actualizarNombreDireNrommed(actualizar_datos);
+            actryf.cargarLosQueEstanEnFoxYnNoAca(actualizar_datos);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    progressDialog.dismiss();
+
+                }
+            }).start();
         }
     }
         public static void verifyStoragePermissions(Activity activity) {
@@ -114,7 +150,7 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
         sv.addView(ll);
         //View dialogview = inflater.inflate(R.layout.layout_usuarios_a_eliminar, null);
         builder.setView(sv);
-
+        actualizar_datos=this;
         ActualizarRutayFolio actryf=new ActualizarRutayFolio();
         String[][] res=actryf.obtenerUsuariosAEliminar(this);
         final CheckBox [] checkBoxesarr=new CheckBox[res.length];
@@ -131,14 +167,14 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                Usuario usr=new Usuario();
+                usr=new Usuario();
                int j=0;
                 for (int i=0;i<checkBoxesarr.length;i++){
                     if(checkBoxesarr[i].isChecked())
                     j++;
                 }
                 System.out.println("j---->"+j);
-                int [] iditems=new int [j];
+                iditems=new int [j];
                 j=0;
                 for (int i=0;i<checkBoxesarr.length;i++){
 
@@ -147,7 +183,31 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
                             j++;
                         }
                     }
+
+                progressDialog = new ProgressDialog(actualizar_datos);
+                progressDialog.setMessage("Eliminando..."); // Setting Message
+                progressDialog.setTitle("Eliminando"); // Setting Title
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+                // Display Progress Dialog
+                progressDialog.setCancelable(false);
+
+                progressDialog.show();
+
+                //Intent data2=data;
+
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            Looper.prepare();
                 usr.eliminarUsuariosById(act,iditems);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        progressDialog.dismiss();
+
+                    }
+                }).start();
+
             }
         })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

@@ -75,15 +75,15 @@ public class Serverconexion extends AppCompatActivity implements View.OnClickLis
 
                 URL [] url = new URL[4];
                 try {
-                    url[0] = new URL("http", ip.getText().toString(), "tmp/ryf_fox.csv");
-                    url[1] = new URL("http", ip.getText().toString(), "tmp/orden_agua.csv");
+                    url[0] = new URL("http", ip.getText().toString(), "tmp/orden_agua.csv");
+              /*      url[1] = new URL("http", ip.getText().toString(), "tmp/orden_agua.csv");
                     url[2] = new URL("http", ip.getText().toString(), "tmp/orden_energia.csv");
-                    url[3] = new URL("http", ip.getText().toString(), "tmp/cons_hist_todo_fox.csv");
+                    url[3] = new URL("http", ip.getText().toString(), "tmp/cons_hist_todo_fox.csv");*/
                 }catch(Exception e){
 
                 }
 
-                for(int i=0;i<4;i++) {
+                for(int i=0;i<url.length;i++) {
                      new DownloadBack().execute(url[i]);
 
                 }

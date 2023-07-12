@@ -25,6 +25,7 @@ public class Buscar extends AppCompatActivity {
     List<Map<String, String>> elementos ;
     private Buscar buscar;
     private SimpleAdapter adaptador1;
+    private ListView lista_estados;
     EditText campo_busqueda;
     private boolean admin;
     String str_busqueda,tipo_toma_estado;
@@ -46,6 +47,7 @@ public class Buscar extends AppCompatActivity {
         lista_encontrados.setAdapter(adaptador1);
         this.tipo_toma_estado=getIntent().getExtras().getString("tipo_toma_estado");
         this.admin=getIntent().getExtras().getBoolean("admin");
+
         lista_encontrados.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
@@ -88,9 +90,9 @@ public class Buscar extends AppCompatActivity {
 
                     }
                 });
-                dialogo_incio.setNegativeButton("Ver Graficas", new DialogInterface.OnClickListener() {
+                dialogo_incio.setNegativeButton("Listado de Estados", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
-                    Intent i=new Intent(buscar,GraficaEstado.class);
+                    Intent i=new Intent(buscar,ListadoEstados.class);
                     i.putExtra("tipo_toma_estado", tipo_toma_estado);
                     i.putExtra("ruta",ruta);
                     i.putExtra("folio",folio);
@@ -98,18 +100,10 @@ public class Buscar extends AppCompatActivity {
 
                     }
                 });
-                if(admin){
+                
                     dialogo_incio.show();
-                }
-                else {
-                    Intent i;
-                    i = new Intent(buscar, Recorrido.class);
-                    //this.tipo_toma_estado="energia";
-                    i.putExtra("tipo_toma_estado", tipo_toma_estado);
-                    i.putExtra("ruta",ruta);
-                    i.putExtra("folio",folio);
-                    startActivity(i);
-                }
+
+
 
             }
 
