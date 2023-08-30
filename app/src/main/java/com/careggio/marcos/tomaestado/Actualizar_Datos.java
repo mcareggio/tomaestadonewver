@@ -156,11 +156,12 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
 
 
 
-            }
-                        Periodo per=new Periodo();
-                        String periodo=per.getPeriodoActual(actualizar_datos);
-                        ActualizarEstados act_est=new ActualizarEstados();
-                        act_est.actualizarEstados(actualizar_datos,Calculo.getPath(actualizar_datos, uri),periodo,tipo_toma_estado);
+            }           if(tipo_boton==2||tipo_boton==3) {
+                            Periodo per = new Periodo();
+                            String periodo = per.getPeriodoActual(actualizar_datos);
+                            ActualizarEstados act_est = new ActualizarEstados();
+                            act_est.actualizarEstados(actualizar_datos, Calculo.getPath(actualizar_datos, uri), periodo, tipo_toma_estado);
+                        }
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -194,7 +195,6 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
         ScrollView sv = new ScrollView(this);
         ll.setOrientation(LinearLayout.VERTICAL);
         sv.addView(ll);
-        //View dialogview = inflater.inflate(R.layout.layout_usuarios_a_eliminar, null);
         builder.setView(sv);
         actualizar_datos=this;
         ActualizarRutayFolio actryf=new ActualizarRutayFolio();

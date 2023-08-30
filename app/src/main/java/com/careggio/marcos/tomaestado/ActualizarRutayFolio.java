@@ -172,6 +172,23 @@ public class ActualizarRutayFolio {
             bd.ejecutarConsulta(context,consulta);
             i++;
         }
+        //Consultar los que no tienen medidor de agua y tiene cargado el orden
+        String consulta_dep_orden_agua="select usuarios.ruta,usuarios.folio from usuarios join orden_agua on orden_agua.ruta=usuarios.ruta and orden_agua.folio=usuarios.folio  where usuarios.med_agua=0";
+        String consulta_dep_orden_energia="select usuarios.ruta,usuarios.folio from usuarios join orden_energia on orden_energia.ruta=usuarios.ruta and orden_energia.folio=usuarios.folio  where usuarios.med_energia=0";
+        res=bd.consutlar(context,consulta_dep_orden_agua);
+        Orden_usuario ordn_obj=new Orden_usuario();
+
+        for(int j=0;j<res.length;j++){
+            System.out.println(res[j][0]+" "+res[j][1]+"Agua para eliminar");
+            ordn_obj.eliminarOrden(context,res[j][0],res[j][1],"agua");
+
+        }
+
+        res=bd.consutlar(context,consulta_dep_orden_energia);
+        for(int j=0;j<res.length;j++){
+          ordn_obj.eliminarOrden(context,res[j][0],res[j][1],"energia");
+        }
+
     }
     public String[][] cargarLosQueEstanEnFoxYnNoAca(Context context){
         Bbdd bd=new Bbdd();

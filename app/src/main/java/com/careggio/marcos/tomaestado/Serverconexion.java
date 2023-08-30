@@ -76,8 +76,8 @@ public class Serverconexion extends AppCompatActivity implements View.OnClickLis
                 URL [] url = new URL[4];
                 try {
                     url[0] = new URL("http", ip.getText().toString(), "tmp/estados_agua.csv");
-                    url[1] = new URL("http", ip.getText().toString(), "tmp/estados_energia.csv");/*
-                    url[2] = new URL("http", ip.getText().toString(), "tmp/orden_energia.csv");
+                    url[1] = new URL("http", ip.getText().toString(), "tmp/estados_energia.csv");
+                    url[2] = new URL("http", ip.getText().toString(), "tmp/copemae.csv");/*
                     url[3] = new URL("http", ip.getText().toString(), "tmp/cons_hist_todo_fox.csv");*/
                 }catch(Exception e){
 
