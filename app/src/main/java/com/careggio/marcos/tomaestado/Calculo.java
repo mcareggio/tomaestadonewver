@@ -27,7 +27,7 @@ import java.util.Locale;
     }
 
     static public String  getTimeStamp(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
 
 
         String fecha = dateFormat.format(new Date());

@@ -424,14 +424,14 @@ public class Estado {
         String tabla="estado_"+periodo+"_"+tipo_toma_estado;
         String tabla_e_ant="estado_"+Calculo.getPeriodoAnterior(periodo)+"_"+tipo_toma_estado;
         String tabla_orden="orden_"+tipo_toma_estado;
-        String consulta="SELECT usuarios.ruta,usuarios.folio,usuarios.nombre_apellido,usuarios.direccion,"+tabla_orden+".nro_orden,"+tabla_e_ant+".estado,"+tabla+".estado,"+tabla+".observacion,"+tabla+".observacion_sist,"+tabla+".fecha_hora,usuarios.med_"+tipo_toma_estado+ " from usuarios left join "+tabla+" on usuarios.ruta="+tabla+".ruta and usuarios.folio="+tabla+".folio left join "+tabla_e_ant+" on "+tabla+".ruta="+tabla_e_ant+".ruta and "+tabla+".folio="+tabla_e_ant+".folio left join "+tabla_orden+" on usuarios.ruta="+tabla_orden+".ruta and usuarios.folio="+tabla_orden+".folio group by usuarios.id order by usuarios.ruta,usuarios.folio;";
+        String consulta="SELECT usuarios.ruta,usuarios.folio,usuarios.nombre_apellido,usuarios.direccion,"+tabla_orden+".nro_orden,"+tabla_e_ant+".estado,"+tabla+".estado,"+tabla+".observacion,"+tabla+".observacion_sist,"+tabla+".fecha_hora,"+tabla+".geolocalizacion,usuarios.med_"+tipo_toma_estado+ " from usuarios left join "+tabla+" on usuarios.ruta="+tabla+".ruta and usuarios.folio="+tabla+".folio left join "+tabla_e_ant+" on "+tabla+".ruta="+tabla_e_ant+".ruta and "+tabla+".folio="+tabla_e_ant+".folio left join "+tabla_orden+" on usuarios.ruta="+tabla_orden+".ruta and usuarios.folio="+tabla_orden+".folio group by usuarios.id order by usuarios.ruta,usuarios.folio;";
         System.out.println(consulta);
         String string="";
         int i=0;
         String array[][]=bd.consutlar(context,consulta);
         String path=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
         File tempFile = new File(path+"/export_"+tabla+"-"+Calculo.getDateTimeforFile()+".csv");
-
+        String fyh_array[];
 
         //System.out.println(tempFile.toString());
         try {
@@ -439,7 +439,7 @@ public class Estado {
             outputStream= new FileOutputStream(tempFile);
 
             //outputStream = context.openFileOutput("prueba_export.txt", Context.MODE_PRIVATE);
-            string="Ruta;Folio;Nombre y Apellido;Direccion;Orden Toma Estado;Estado "+Calculo.getPeriodoAnterior(periodo)+";Estado "+periodo+";Consumo;Observacion;Obsevacion Sistema;Fecha y Hora\n";
+            string="Ruta;Folio;Nombre y Apellido;Direccion;Orden Toma Estado;Estado "+Calculo.getPeriodoAnterior(periodo)+";Estado "+periodo+";Consumo;Observacion;Obsevacion Sistema;Fecha y Hora;Geolocalizacion;Fecha;Hora\n";
             outputStream.write(string.getBytes());
             outputStream.flush();
 
@@ -459,7 +459,7 @@ public class Estado {
                 if(array[i][9]==null)
                 array[i][8]="Estado no Tomado por Usuario";
 
-                if(array[i][10].compareTo("1")!=0) {
+                if(array[i][11].compareTo("1")!=0) {
                     array[i][5] = "-----";
                     array[i][6] = "-----";
                     array[i][8]="Sin Servicio";
@@ -467,11 +467,14 @@ public class Estado {
                     consumo_str=  "-----";
                 }
 
-                string=array[i][0]+";"+array[i][1]+";"+array[i][2]+";"+array[i][3]+";"+array[i][4]+";"+array[i][5]+";"+array[i][6]+";"+consumo_str+";"+array[i][7]+";"+array[i][8]+";"+array[i][9]+"\n";
+                fyh_array=array[i][9].split(" ");
+                System.out.println(fyh_array[1]);
+                string=array[i][0]+";"+array[i][1]+";"+array[i][2]+";"+array[i][3]+";"+array[i][4]+";"+array[i][5]+";"+array[i][6]+";"+consumo_str+";"+array[i][7]+";"+array[i][8]+";"+array[i][9]+";"+array[i][10]+";"+fyh_array[0]+";"+fyh_array[1]+"\n";
                 System.out.println(string);
-
-                outputStream.write(string.getBytes());
-                outputStream.flush();
+                if(array[i][11].compareTo("1")==0) {
+                    outputStream.write(string.getBytes());
+                    outputStream.flush();
+                }
 
             }
 

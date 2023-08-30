@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class Adminsqltite extends SQLiteOpenHelper{
-    public static int version=51;
+    public static int version=52;
 
     public Adminsqltite(Context context, String nombre, SQLiteDatabase.CursorFactory factory, int version) {
 
@@ -41,7 +41,8 @@ public class Adminsqltite extends SQLiteOpenHelper{
         this.crearTablas(db);
 
         *///Actulizar borrando todo
-         db.execSQL("ALTER TABLE usuarios ADD geolocalizacion VARCHAR(100)");
+         //db.execSQL("ALTER TABLE usuarios ADD geolocalizacion VARCHAR(100)");
+        db.execSQL(ActualizarEstados.getTableStructQuery());
 
     }
     public void crearTablas(SQLiteDatabase db){
@@ -51,6 +52,7 @@ public class Adminsqltite extends SQLiteOpenHelper{
         db.execSQL(Orden_usuario.getTableStructQuery("energia"));
         db.execSQL(Opciones.getTableStructQuery());
         db.execSQL(ActualizarRutayFolio.getTableStructQuery());
+        db.execSQL(ActualizarEstados.getTableStructQuery());
         db.insert("opciones",null,Opciones.getValoresDefault());
         db.execSQL(Usuarios_sistema.getTableStructQuery());
         for (int i=0;i<3;i++)

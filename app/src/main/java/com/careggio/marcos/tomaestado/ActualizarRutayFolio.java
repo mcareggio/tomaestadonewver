@@ -7,19 +7,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by marcos on 11/8/2022.
- */
+
 
 public class ActualizarRutayFolio {
     public static String getTableStructQuery(){
         return "create table usuarios_tmp(id integer  primary key AUTOINCREMENT,ruta integer,folio integer, nombre_apellido text, direccion text,nro_med_energia integer,nro_med_agua integer,med_energia integer,med_agua integer);";
     }
     public String[] cargarTablaTemporal(Context context,String uri) {
+        System.out.println("Cargando Tabla Temporal");
         Bbdd bd=new Bbdd();
 
-      //  if(!bd.isExistTabla(context,"usuarios_tmp"))
-       //     bd.ejecutarConsulta(context,ActualizarRutayFolio.getTableStructQuery());
 
         bd.vaciar_tabla(context,"usuarios_tmp");
 

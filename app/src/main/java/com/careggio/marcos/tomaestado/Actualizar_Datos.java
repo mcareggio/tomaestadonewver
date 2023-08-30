@@ -30,7 +30,8 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    private String tipo_boton;
+    private boolean abrir_cargador_archivos;
+    private int tipo_boton;
     private static final int REQUEST_INTERNET = 1;
     private static String[] PERMISSIONS_INTERNET = {
             Manifest.permission.INTERNET,
@@ -43,7 +44,9 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
     private Button cargar_archivo_actualizaciones,quitar_usuarios,actualizar_estados_agua,actualizar_estados_energia,actualizar_orden_agua,actualizar_orden_energia;
     private Uri uri;
     private int VALOR_RETORNO = 1;
+    private String tipo_toma_estado;
     Actualizar_Datos act;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,25 +61,53 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
         quitar_usuarios.setOnClickListener(this);
         actualizar_estados_agua=(Button)findViewById(R.id.actualizar_estados_agua);
         actualizar_estados_agua.setOnClickListener(this);
+        actualizar_estados_energia=(Button)findViewById(R.id.actualizar_estados_energia);
+        actualizar_estados_energia.setOnClickListener(this);
+        actualizar_orden_agua=(Button)findViewById(R.id.actualizar_orden_agua);
+        actualizar_orden_agua.setOnClickListener(this);
+        actualizar_orden_energia=(Button)findViewById(R.id.actualizar_orden_energia);
+        actualizar_orden_energia.setOnClickListener(this);
         act=this;
 
     }
     public void onClick(View view) {
+        abrir_cargador_archivos=false;
         switch (view.getId()) {
-            case R.id.cargar_archivo_actualizaciones:
-                //Toast.makeText(this, "El Boton Esta Funcionando", Toast.LENGTH_SHORT).show();
-                tipo_boton="boton_rf";
-                Intent intent;
-                intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                startActivityForResult(Intent.createChooser(intent, "Choose File"), VALOR_RETORNO);
-                break;
+
             case R.id.quitar_usuarios:
                 this.mostrarDialogoConElementosAEliminar();
                 break;
-            case R.id.actualizar_estados_agua:
-                /*Terminar de hacer*/
+
+            case R.id.cargar_archivo_actualizaciones:
+                tipo_boton=1;
+                abrir_cargador_archivos=true;
                 break;
+            case R.id.actualizar_estados_agua:
+                tipo_boton=2;
+                abrir_cargador_archivos=true;
+                break;
+            case R.id.actualizar_estados_energia:
+                tipo_boton=3;
+                abrir_cargador_archivos=true;
+                break;
+            case R.id.actualizar_orden_agua:
+                tipo_boton=4;
+                abrir_cargador_archivos=true;
+                break;
+            case R.id.actualizar_orden_energia:
+                tipo_boton=5;
+                abrir_cargador_archivos=true;
+                break;
+
+
+
+
+
+        }
+        if(abrir_cargador_archivos){
+            intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");
+            startActivityForResult(Intent.createChooser(intent, "Choose File"), VALOR_RETORNO);
 
         }
 
@@ -89,11 +120,7 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
             //Cancelado por el usuario
         }
         if ((resultCode == RESULT_OK) && (requestCode == VALOR_RETORNO)) {
-            //Procesar el resultado
 
-            //Uri uri = data.getData(); //obtener el uri content
-
-            //System.out.println("Archivo Seleccionado "+uri);
             String[] res;
             progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Cargando..."); // Setting Message
@@ -111,11 +138,30 @@ public class Actualizar_Datos extends AppCompatActivity implements View.OnClickL
                     try {
                         Looper.prepare();
                          //obtener el uri content
+            System.out.println("Antes del switch" + tipo_boton);
+            switch(tipo_boton) {
+                case 1:
+                ActualizarRutayFolio actryf = new ActualizarRutayFolio();
+                actryf.cargarTablaTemporal(actualizar_datos, Calculo.getPath(actualizar_datos, uri));
+                actryf.actualizarNombreDireNrommed(actualizar_datos);
+                actryf.cargarLosQueEstanEnFoxYnNoAca(actualizar_datos);
+                    break;
 
-            ActualizarRutayFolio actryf=new ActualizarRutayFolio();
-            actryf.cargarTablaTemporal(actualizar_datos,Calculo.getPath(actualizar_datos,uri));
-            actryf.actualizarNombreDireNrommed(actualizar_datos);
-            actryf.cargarLosQueEstanEnFoxYnNoAca(actualizar_datos);
+                case 2:
+                    tipo_toma_estado="agua";
+                    break;
+                case 3:
+                    tipo_toma_estado="energia";
+                    break;
+
+
+
+            }
+                        Periodo per=new Periodo();
+                        String periodo=per.getPeriodoActual(actualizar_datos);
+                        ActualizarEstados act_est=new ActualizarEstados();
+                        act_est.actualizarEstados(actualizar_datos,Calculo.getPath(actualizar_datos, uri),periodo,tipo_toma_estado);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
